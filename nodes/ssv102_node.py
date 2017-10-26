@@ -36,7 +36,7 @@ latest = {}
 while not rospy.is_shutdown():
     t = rospy.Time.now()
     msg.header.stamp = t
-    msg.header.frame_id = gps_antenna_frame
+    msg.header.frame_id = gps_origin_frame
     msg.header.seq = seq
     seq += 1
     msg.sentence = serial_reader.read_sentence()
