@@ -8,14 +8,22 @@ import math
 class Parser(object):
     @staticmethod
     def parse(sentence):
+        if sentence is None or sentence == '':
+            return None, None
+
         rest, checksum = sentence.split('*')
-        msg_id = rest.split(',')[0]
+        msg_id = rest.split(',')[0].lstrip('$')
         vals = rest.split(',')[1:]
+
+        if any(map(lambda t: t == '', vals)):
+            return None, None
 
         if msg_id == 'GPGGA':
             return msg_id, Parser.parse_gga(vals, checksum)
         elif msg_id == 'GPHDT':
             return msg_id, Parser.parse_hdt(vals, checksum)
+        else:
+            return None, None
 
     @staticmethod
     def parse_gga(vals, checksum):
@@ -53,5 +61,5 @@ class HDT:
     def __init__(self, vals):
         self.heading, self.true_heading = vals
         # Heading: CW is positive
-        rad = math.radians(-self.heading)
+        rad = math.radians(-float(self.heading))
         self.orientation = tf.transformations.quaternion_from_euler(0, 0, rad)

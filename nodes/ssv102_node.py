@@ -47,6 +47,8 @@ while not rospy.is_shutdown():
 
     # Publish tf
     msg_id, obj = Parser.parse(msg.sentence)
+    if msg_id is None:
+        continue
     latest[msg_id] = obj
 
     if 'GPGGA' in latest.keys() and latest['GPGGA'] is not None \
