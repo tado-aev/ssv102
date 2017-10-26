@@ -1,0 +1,21 @@
+port: /dev/ttyUSB4
+baud: 115200
+msg_rates: {
+    'GPGGA': 10,
+    'GPHDT': 10,
+}
+publish_tf: true
+gps_origin_frame: 'gps_origin'
+gps_antenna_frame: 'ssv102'
+# Only publish tf if data quality is one of the following
+# 1: Single point
+# 2: Differential
+gps_required_quality: ['1', '2']
+# 4326: WGS84
+# 2443: Japan Plane Rectangular CS 1
+# ...
+# 2452: Japan Plane Rectangular CS 10 (for Tohoku area)
+# ...
+# 2461: Japan Plane Rectangular CS 19
+gps_src_epsg: 4326
+gps_tgt_epsg: 2452

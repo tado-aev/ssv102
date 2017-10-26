@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="ssv102" type="ssv102_node.py" name="ssv102" >
+    <rosparam command="load" file="$(find ssv102)/configs/coms.yaml"/>
+  </node>
+
+  <node pkg="nmea_navsat_driver" type="nmea_topic_driver" name="nmea_navsat_driver">
+  </node>
+</launch>

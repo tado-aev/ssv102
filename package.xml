@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <name>ssv102</name>
+  <version>0.1.0</version>
+  <description>Hemisphere ssV-102 driver</description>
+
+  <maintainer email="mizuno.naoki@rm.is.tohoku.ac.jp">Naoki Mizuno</maintainer>
+
+  <license>MIT</license>
+
+  <url type="website">https://github.com/tado-aev/ssv102</url>
+
+  <author>Naoki Mizuno</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>nmea_msgs</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>python-serial</run_depend>
+  <run_depend>python-gdal</run_depend>
+</package>
