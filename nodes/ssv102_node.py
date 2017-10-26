@@ -9,18 +9,18 @@ from ssv102 import Parser, SerialReader, Converter
 
 rospy.init_node('ssv102_node')
 
-port = rospy.get_param('port')
-baud = rospy.get_param('baud')
-msg_rates = rospy.get_param('msg_rates', {
+port = rospy.get_param('~port')
+baud = rospy.get_param('~baud')
+msg_rates = rospy.get_param('~msg_rates', {
     'GPGGA': 10,
     'GPHDT': 10,
 })
-publish_tf = rospy.get_param('publish_tf', True)
-gps_origin_frame = rospy.get_param('gps_origin_frame', 'gps_origin')
-gps_antenna_frame = rospy.get_param('gps_antenna_frame', 'ssv102')
-gps_required_quality = rospy.get_param('gps_required_quality', ['1', '2'])
-gps_src_epsg = rospy.get_param('gps_src_epsg', 4326)
-gps_tgt_epsg = rospy.get_param('gps_tgt_epsg', 4987)
+publish_tf = rospy.get_param('~publish_tf', True)
+gps_origin_frame = rospy.get_param('~gps_origin_frame', 'gps_origin')
+gps_antenna_frame = rospy.get_param('~gps_antenna_frame', 'ssv102')
+gps_required_quality = rospy.get_param('~gps_required_quality', ['1', '2'])
+gps_src_epsg = rospy.get_param('~gps_src_epsg', 4326)
+gps_tgt_epsg = rospy.get_param('~gps_tgt_epsg', 4987)
 
 serial_reader = SerialReader(port, baud)
 serial_reader.jascs(msg_rates)
