@@ -20,7 +20,8 @@ class SerialReader:
     def jascs(self, msg_rates):
         self.msgs = list(map(lambda s: s.lstrip('$'), msg_rates.keys()))
         fmt = '$JASC,{0},{1}\r\n'
-        for k, v in msg_rates:
+        for k in msg_rates.keys():
+            v = msg_rates[k]
             self.com.write(fmt.format(k, v))
 
     def read_sentence(self):
@@ -28,7 +29,10 @@ class SerialReader:
             return ''
 
         while not rospy.is_shutdown():
-            line = self.com.readline()
+            try:
+                line = self.com.readline()
+            except:
+                return ''
             if line == '':
                 continue
             msg_id = line.split(',')[0].lstrip('$')
