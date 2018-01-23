@@ -12,10 +12,17 @@ gps_antenna_frame: 'ssv102'
 # 2: Differential
 gps_required_quality: ['1', '2']
 # 4326: WGS84
+# 32653: UTM Zone 53N
+#
+# JGD2000 (Don't use this anymore!)
 # 2443: Japan Plane Rectangular CS 1
 # ...
 # 2452: Japan Plane Rectangular CS 10 (for Tohoku area)
 # ...
 # 2461: Japan Plane Rectangular CS 19
+#
+# JGD2011
+# 6678: Japan Plane Rectangular CS 10
+# 6690: UTM Zone 53N
 gps_src_epsg: 4326
-gps_tgt_epsg: 2452
+gps_tgt_epsg: 32653
