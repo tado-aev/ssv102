@@ -62,5 +62,5 @@ class HDT:
         self.heading, self.true_heading = vals
         # Heading: CW is positive and 0 points to the north
         # TF frame: CCW is positive and 0 points to the east
-        rad = math.radians(-(float(self.heading) - math.pi / 2))
+        rad = -math.radians(float(self.heading)) + math.pi / 2
         self.orientation = tf.transformations.quaternion_from_euler(0, 0, rad)
